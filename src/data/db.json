@@ -1,0 +1,40 @@
+{
+    "houses": [
+        { "name": "Exquisite room",
+          "sqare": 20,
+          "id": "A01",
+          "region": "North",
+          "price": 760
+        },
+        { "name": "Junior Suite",
+          "sqare": 10,
+          "id": "M03",
+          "region": "South",
+          "price": 600
+        },
+        { "name": "Family House",
+          "sqare": 55,
+          "id": "A06",
+          "region": "North",
+          "price": 900
+        },
+        { "name": "Double room",
+          "sqare": 25,
+          "id": "A13",
+          "region": "West",
+          "price": 700
+        },
+        { "name": "Triple room",
+          "sqare": 35,
+          "id": "C20",
+          "region": "South",
+          "price": 800
+        },
+        { "name": "Quadruple room",
+          "sqare": 50,
+          "id": "N12",
+          "region": "West",
+          "price": 1000
+        }
+      ] 
+}
