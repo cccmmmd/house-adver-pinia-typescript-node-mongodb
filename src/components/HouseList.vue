@@ -28,9 +28,9 @@ export default defineComponent({
 
 <template>
 	<div class="hous-list">
-    <h3>Order by {{ order }}</h3>
+    <h3>Currently order by <span style="color: #8e1313">{{ order }}</span></h3>
 		<ul>
-			<li v-for="ho in orderedhouse" :key="ho.id">
+			<li v-for="ho in houses" :key="ho.id">
 				<h2>
 					{{ ho.name }} in {{ ho.region }} region. Square meters:
 					{{ ho.sqare }}
