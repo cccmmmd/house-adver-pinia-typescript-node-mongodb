@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import House from './types/House'
 import HouseList from './components/HouseList.vue';
 import Order from './types/Order';
 import { useHouseAd } from './stores/HouseAd'
@@ -10,17 +9,18 @@ export default defineComponent({
   name: 'App',
   components:{ HouseList },
   setup() {
-    // const houses = ref<House[]>([])
+    const houses = ref<House[]>([])
     const houseStore = useHouseAd()
     
 
     houseStore.fetchHouses() //fetch data
   
+    houses.value = houseStore.houses
     const order = ref<Order>('price')
     const clickHandler = (term: Order) => {
       order.value = term
     }
-    return {  clickHandler, order, houseStore }
+    return {  clickHandler, order, houses }
   },
 })
 </script>
@@ -34,7 +34,7 @@ export default defineComponent({
 		    <button @click="clickHandler('region')">Order by region</button>
       </div>
     </header>
-				<HouseList :houses="houseStore.houses" :order="order" />
+				<HouseList :houses="houses" :order="order" />
 	</div>
 </template>
 

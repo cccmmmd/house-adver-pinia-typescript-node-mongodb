@@ -1,12 +1,19 @@
 import { defineStore } from "pinia"
-import House from '../types/House'
+import type House from '../types/House'
 
+type hState = {
+    houses: House[],
+}
 export const useHouseAd = defineStore('houseStore', {
-    state: () => ({
-        houses: <House[]>[]
+    state: (): hState=> ({
+        houses: []
     }),
     getters: {
-
+        orderBy(order){
+            return [...this.houses].sort((a: House, b: House) => {
+				return a[order] > b[order]? 1: -1
+			})
+        }
     },
     actions: {
         async fetchHouses(){
