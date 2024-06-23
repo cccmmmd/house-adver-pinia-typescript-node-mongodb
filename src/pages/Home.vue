@@ -35,6 +35,7 @@ export default defineComponent({
     
 
     const fetchData = async () => {
+      console.log('@@@')
       await houseStore.fetchHouses()
       houses.value = houseStore.orderBy('price')
     }
@@ -52,31 +53,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-    header {
-    text-align: center;
-    }
-    header .order {
-        margin-top: 20px;
-    }
-    header h1 {
-        font-size: 50px;
-        color: #8e1313;
-    }
+   
     .createBtn {
         max-width: 960px; 
         margin: 20px auto;
         display: flex; 
         justify-content: end
-    }
-    button, a {
-        text-decoration: none;
-        margin: 0 10px;
-        color: #1195c9;
-        border: 3px solid #1195c9;
-        background: #d5f0ff;
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
     }
 </style>

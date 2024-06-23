@@ -12,13 +12,28 @@ export const useHouseAd = defineStore('houseStore', {
     actions: {
         async fetchHouses(){
             const res = await fetch("http://localhost:3000/houses")
-            const data = await res.json()
+            const data:House[] = await res.json()
             this.houses = data 
         },
-        orderBy(order:Order){
+        orderBy(order:Order):House[]{
             return [...this.houses].sort((a: House, b: House) => {
 				return a[order] > b[order]? 1: -1
 			})
+        },
+        async addHouse(house:House){
+            this.houses.unshift(house)
+            const res = await fetch("http://localhost:3000/houses",{
+                method: 'POST',
+                body: JSON.stringify(house),
+                headers: {'Content-Type': 'application/json'}
+            })
+            if(res.error){
+                console.log(res.error)
+            }
+        },
+        deleteHouse(id){
+            this.house = this.house 
+
         }
     }
 })
