@@ -1,5 +1,6 @@
 <script lang="ts">
 import { PropType, defineComponent, computed } from "vue";
+import { useHouseAd } from '../stores/HouseStore'
 import House from "../types/House";
 import Order from "../types/Order";
 
@@ -15,13 +16,20 @@ export default defineComponent({
 			required: true,
 		},
 	},
-	setup(props) {
+	emit: ['fetchNew'],
+	setup(props, context) {
+		const houseStore = useHouseAd()
+		const deleteAd = (id:String) =>{
+			houseStore.deleteHouse(id)
+			context.emit('fetchNew');
+
+		}
 		const orderedhouse = computed(()=> {
 			return [...props.houses].sort((a: House, b: House) => {
 				return a[props.order] > b[props.order]? 1: -1
 			})
 		})
-		return {orderedhouse}
+		return {orderedhouse, deleteAd}
 	},
 });
 </script>
@@ -31,6 +39,7 @@ export default defineComponent({
     <h3>Currently order by <span style="color: #8e1313">{{ order }}</span></h3>
 		<ul>
 			<li v-for="ho in houses" :key="ho.id">
+				<div class="delete" @click="deleteAd(ho.id)">Ｘ</div>
 				<h2>
 					{{ ho.name }} in {{ ho.region }} region. Square meters:
 					{{ ho.sqare }}
@@ -80,5 +89,10 @@ export default defineComponent({
 	color: #17bf66;
 	font-weight: bold;
 	margin: 10px 4px;
+}
+.delete {
+	color: red;
+	float: right;
+	cursor: pointer;
 }
 </style>

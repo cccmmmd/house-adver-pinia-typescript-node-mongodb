@@ -31,8 +31,16 @@ export const useHouseAd = defineStore('houseStore', {
                 console.log(res.error)
             }
         },
-        deleteHouse(id){
-            this.house = this.house 
+        async deleteHouse(id:String){
+            this.houses = this.houses.filter( p => {
+                return p.id !== id
+            })
+            const res = await fetch("http://localhost:3000/houses/" + id,{
+                method: 'DELETE',
+            })
+            if (res.error) {
+                console.log(res.error)
+            }
 
         }
     }

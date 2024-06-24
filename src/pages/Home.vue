@@ -14,7 +14,7 @@
         >Create an Ad
         </router-link>       
     </div>
-		<HouseList :houses="houses" :order="order"/>
+		<HouseList :houses="houses" :order="order" @fetchNew="fetchNew"/>
 	</div>
 </template>
 
@@ -35,19 +35,20 @@ export default defineComponent({
     
 
     const fetchData = async () => {
-      console.log('@@@')
       await houseStore.fetchHouses()
       houses.value = houseStore.orderBy('price')
     }
    
     fetchData() //fetch data
   
-    
+    const fetchNew = () =>{
+      houses.value = houseStore.orderBy(order.value)
+    }
     const clickHandler = (term: Order) => {
       order.value = term
       houses.value = houseStore.orderBy(term)
     }
-    return {  clickHandler, order, houses }
+    return {  clickHandler, order, houses, fetchNew }
   },
 })
 </script>
