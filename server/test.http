@@ -1,0 +1,38 @@
+@hostname = localhost
+@port = 3001
+@host = {{hostname}}:{{port}}
+
+//Get all
+# GET http://{{host}}/api/houses
+
+//Get one
+# GET http://{{host}}/api/houses/1
+
+# //Create
+# POST http://{{host}}/api/houses 
+# content-type: application/json
+
+# {
+#     "name": "Beautiful Suite",
+#     "sqare": 13,
+#     "id": "200",
+#     "region": "East",
+#     "price": 700
+# }
+
+//Update
+PATCH http://{{host}}/api/houses/64
+content-type: application/json
+
+{
+    "id":"64",
+    "name":"test",
+    "price":330,
+    "region":"West",
+    "sqare":22
+}
+
+# //Delete one
+# DELETE http://{{host}}/api/houses/200
+
+

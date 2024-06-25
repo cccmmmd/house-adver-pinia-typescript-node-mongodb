@@ -6,7 +6,7 @@
         <a @click="goBack">
 			< 上一頁
         </a>
-        <form @submit.prevent="addPost">
+        <form @submit.prevent="addAd">
             <div class="form-item">
                 <label for="name">House Name</label><br/>
                 <input v-model="newHouse.name" name="name" type="text" id="name"/>
@@ -19,10 +19,10 @@
                 <label for="region">Region</label><br/>
                 <select v-model="newHouse.region" name="region" id="region">
                     <option value="">--Please choose a region--</option>
-                    <option value="north">North</option>
-                    <option value="south">South</option>
-                    <option value="east">East</option>
-                    <option value="west">West</option>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
                 </select>
             </div>
             <div class="form-item">
@@ -40,7 +40,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
-import House from "../types/House";
+import type House from "../types/House";
 import { useHouseAd } from '../stores/HouseStore'
 
 export default defineComponent({
@@ -61,7 +61,7 @@ export default defineComponent({
         const isValidHousetPrice = computed(() => !!newHouse.price);
         
 
-        const addPost = async() => {
+        const addAd = async() => {
             newHouse.id = `${Math.floor(Math.random()*100)}`
             await houseStore.addHouse(newHouse)
             router.push({ name: 'home' })
@@ -69,7 +69,7 @@ export default defineComponent({
         const goBack = () => {
             router.go(-1);
         };
-        return {newHouse, addPost, isValidHousetName, isValidSqare, isValidHousetRegion, isValidHousetPrice, goBack}
+        return {newHouse, addAd, isValidHousetName, isValidSqare, isValidHousetRegion, isValidHousetPrice, goBack}
     }
 })  
 

@@ -4,8 +4,8 @@
       <h1>House Advertising</h1>
       <div class="order">
         <button @click="clickHandler('price')">Order by price</button>
-		<button @click="clickHandler('sqare')">Order by sqare</button>
-		<button @click="clickHandler('region')">Order by region</button>
+		    <button @click="clickHandler('sqare')">Order by sqare</button>
+		    <button @click="clickHandler('region')">Order by region</button>
       </div>
     </header>
     <div class="createBtn">
@@ -21,7 +21,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import HouseList from '../components/HouseList.vue';
-import Order from '../types/Order';
+import type Order from '../types/Order';
+import type House from '../types/House';
 import { useHouseAd } from '../stores/HouseStore'
 
 

@@ -1,9 +1,9 @@
 interface House {
     name: string,
-    sqare: number,
+    sqare: number | null,
     id: string,
     region: string,
-    price: number
+    price: number | null
 }
 
 export default House
