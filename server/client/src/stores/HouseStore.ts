@@ -13,23 +13,22 @@ export const useHouseAd = defineStore('houseStore', {
         house: {} as House
     }),
     actions: {
-        async fetchHouses(){
+        async fetchHouses():void{
             const res = await fetch(`${baseUrl}/api/houses`)
             const data:House[] = await res.json()
             this.houses = data 
         },
-        async fetchOneHouses(id:string){
+        async fetchOneHouses(id:string):void{
             const res = await fetch(`${baseUrl}/api/houses/${id}`)
             const data:House = await res.json()
             this.house = data
         },
         orderBy(order:Order):House[]{
-            
             return [...this.houses].sort((a: House, b: House) => {
 				return a[order] > b[order]? 1: -1
 			})
         },
-        async addHouse(house:House){
+        async addHouse(house:House):void{
             this.houses.unshift(house)
             const res = await fetch(`${baseUrl}/api/houses`,{
                 method: 'POST',
