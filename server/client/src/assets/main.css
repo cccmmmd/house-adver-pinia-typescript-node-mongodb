@@ -35,3 +35,8 @@ button:disabled {
   border: 3px solid #676b6d;
   background: #dedede;
 }
+
+.goback {
+  max-width: 660px;
+  margin: 20px auto;
+}

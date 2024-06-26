@@ -6,7 +6,7 @@ type hState = {
     houses: House[],
     house: House
 }
-const baseUrl = 'http://localhost:3001'
+const baseUrl = 'https://house-j9oq.onrender.com'
 export const useHouseAd = defineStore('houseStore', {
     state: (): hState=> ({
         houses: [],

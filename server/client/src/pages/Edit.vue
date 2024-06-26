@@ -3,7 +3,9 @@
     <header>
       <h1>Create a House Ad</h1>
     </header>
-    <a @click="goBack"> < 取消 </a>
+    <div class="goback">
+      <a @click="goBack"> < 取消 </a>
+    </div>
     <form @submit.prevent="saveAd">
       <div class="form-item">
         <label for="name">House Name</label><br />
