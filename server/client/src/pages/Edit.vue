@@ -9,12 +9,11 @@
     <form @submit.prevent="saveAd">
       <div class="form-item">
         <label for="name">House Name</label><br />
-        <input v-if="newHouse.name" v-model="newHouse.name" name="name" type="text" id="name" />
+        <input v-model="newHouse.name" name="name" type="text" id="name" />
       </div>
       <div class="form-item">
         <label for="sqare">Sqare size</label><br />
         <input
-          v-if="newHouse.sqare"
           v-model="newHouse.sqare"
           name="sqare"
           type="number"
@@ -23,7 +22,7 @@
       </div>
       <div class="form-item">
         <label for="region">Region</label><br />
-        <select v-if="newHouse.region" v-model="newHouse.region" name="region" id="region">
+        <select v-model="newHouse.region" name="region" id="region">
           <option value="">--Please choose a region--</option>
           <option value="North">North</option>
           <option value="South">South</option>
@@ -33,7 +32,7 @@
       </div>
       <div class="form-item">
         <label for="price">House Price</label><br />
-        <input v-if="newHouse.price" v-model="newHouse.price" name="price" type="number" />
+        <input v-model="newHouse.price" name="price" type="number" />
       </div>
       <button
         :disabled="
@@ -56,7 +55,13 @@ import { useHouseAd } from '../stores/HouseStore'
 export default defineComponent({
   name: 'App',
   setup() {
-    const newHouse = reactive<House>({})
+    const newHouse = reactive<House>({
+      name: '',
+      sqare: null,
+      id: '',
+      region: '',
+      price: null
+    })
     const router = useRouter()
     const route = useRoute()
     const houseStore = useHouseAd()
